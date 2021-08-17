@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@mixin center($jc:center,$ac:center,$fx:row) {
+    display: flex;
+    align-items: $ac;
+    justify-content: $jc;
+    flex-direction: $fx;
+}
+$mc: #1F4AA8;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+.btn{
+    padding: 10px 30px;
+    @include center;
+    background: $mc;
+    border-radius: 50px;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+
+
+// header
+.head{
+    min-height: 100vh;
+    color: #fff;
+    background: url(../img/head_bg.png) center/cover;
+    @include center;
+    // display: none;
+    &__nav{
+        position: absolute;
+        padding: 5vh 5vw;
+        top:0 ;
+        left: 0;
+        height: 50px;
+        width: 100%;
+        @include center(space-between);
+        li{
+            display: inline;
+        }
+        li:not(:last-child){
+            margin-right: 50px;
+        }  
+    }
+    &__text{
+        text-align: center;
+        h2{
+            font-size: 3em;
+        }
+    }
+}
+
+// section1
+.sec1{
+    padding:0 5vw;
+    background:#222534 ;
+    &__box{
+        padding: 20px;
+        border-radius: 20px;
+        @include center(center,center,column);
+        background: #fff;
+        color: #222534;
+        ul{
+            width: 100%;
+            box-shadow: 0 3px 0 #f1f1f1;
+            @include center(flex-start);
+            li{
+                padding: 5px 0;
+                a{
+                    color: #888AA2;
+                }
+            }
+            li:not(:first-child){
+                margin-left: 50px;
+            }
+            li:nth-child(2){
+                a{
+                    color: $mc;
+                    font-weight: 600;
+                }
+                box-shadow:0 3px 0 $mc;
+            }
+        }
+
+        // select options
+        &-select{
+            padding: 20px 0;
+            width: 100%;
+            @include center(space-between);
+            .radio{
+                @include center;
+                label{
+                    @include center;
+                    input{
+                        -webkit-appearance: none;
+                        margin: 0 10px;
+                        height: 15px;
+                        width: 15px;
+                        border-radius: 50%;
+                        box-shadow: 0 0 0 2px $mc,inset 0 0 0 $mc;
+                        transition: 0.5s;
+                    }
+                    input:checked{
+                        box-shadow:0 0 0 2px $mc, inset 0 0 0 2px #fff,inset
+                        0 0 0 10px $mc;
+                    }
+                }
+                label:not(:first-child){
+                    margin-left: 50px;
+                }
+            }
+            .option{
+                select{
+                    border:none;
+                    outline: none;
+                    color: $mc;
+                }
+            }
+        }
+
+        // travel inputs
+        &-travel{
+            width: 100%;
+            @include center(space-between);
+            .input{
+                @include center;
+                &-content{
+                    padding: 10px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 0 2px #f1f1f1;
+                    @include center;
+                    input{
+                        border: none;
+                        outline: none;
+                        font-size: 14px;
+                        margin-left: 10px;
+                        width: 100%;
+                    }
+                }
+                &-content.date{
+                    margin-right: 10px;
+                }
+                .exchange{
+                    margin: 0 10px;
+                    height: 40px;
+                    width: 40px;
+                    @include center;
+                    border-radius: 50%;
+                    box-shadow:0 0 0 2px #f1f1f1;
+                }
+            }
+        }
+        .btn{
+            margin-top: 20px;
+            color: #fff;
+        }
+    }
+}
+
+// section2
+.sec2{
+    min-height: 100vh;
+    padding: 100px 5vw;
+    background: #222534;
+    color: #fff;
+    &-cards{
+        margin-top: 20px;
+        height: 80vh;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+        "A A D E"
+        "B C D E";
+
+
+        .card{
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            img{
+                width: 100%;
+            }
+            .text{
+                position: absolute;
+                padding: 10px;
+                @include center(center,flex-start,column);
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: #00000080;
+                color: #fff;
+
+            }
+        }
+
+        .card:nth-child(1){grid-area: A;}
+        .card:nth-child(2){grid-area: B;}
+        .card:nth-child(3){grid-area: C;}
+        .card:nth-child(4){grid-area: D;}
+        .card:nth-child(5){grid-area: E;}
+    }
+}
+
+// section 3
+.sec3{
+    padding: 0 0 100px 0;
+    @include center;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    background: #222534;
+    .store{
+        width: 100%;
+        img{
+            transform: scale(0.8);
+            &:last-child{
+                margin-right: 40px;
+            }
+        }
+        @include center;
+    }
+}
+
+// footer
+.footer{
+    padding: 5vh 5vw;
+    width: 100%;
+    @include center(space-between);
+    background:#133B5C;
+    .brand{
+        max-width: 250px;
+        @include center(space-between,flex-start,column);
+        color: #fff;
+        h2{
+            margin: 20px 0;
+        }
+    }
+    li{
+        display: inline-block;
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+        .social{
+            margin-top: 50px;
+            a:not(:last-child){
+                margin-right: 20px;
+            }
+        }
+        p{
+            font-weight: 300;
+        }
+    }
+}
+
+
+
+
+
+
+
